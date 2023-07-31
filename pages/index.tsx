@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { Grid } from "@nextui-org/react";
 
 import { pokeApi } from "@/api";
@@ -10,7 +10,7 @@ interface Props {
   pokemons: SmallPokemon[];
 }
 
-export default function HomePage({ pokemons }: Props) {
+const HomePage: NextPage<Props> = ({pokemons}) => {
   return (
     <Layout title="Listado de pokemons">
       <Grid.Container gap={2} justify='flex-start'>
@@ -34,3 +34,5 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     },
   }
 };
+
+export default HomePage;
