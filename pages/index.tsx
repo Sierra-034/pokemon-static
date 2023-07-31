@@ -1,3 +1,4 @@
+import { pokeApi } from "@/api";
 import { Layout } from "@/components/layouts";
 import { Button } from "@nextui-org/react";
 import { NextPage, GetStaticProps } from "next";
@@ -14,10 +15,10 @@ export default function HomePage(props) {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  console.log('Hola mundo');
+  const { data } = await pokeApi.get('/pokemon?limit=151');
   return {
     props: {
-      name: 'Samuel'
+      pokemons: data.results,
     },
   }
 };
