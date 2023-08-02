@@ -117,7 +117,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     return {
         props: {
-            pokemon: data,
+            pokemon: {
+                id: data.id,
+                name: data.name,
+                sprites: data.sprites,
+            }
         }
     }
 };
